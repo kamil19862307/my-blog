@@ -35,7 +35,8 @@ class PostController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'message' => 'required|string|max:255'
+            'title' => 'required|string',
+            'message' => 'required|string',
         ]);
 
         $request->user()->posts()->create($validated);
@@ -71,7 +72,8 @@ class PostController extends Controller
         Gate::authorize('update', $post);
 
         $validated = $request->validate([
-            'message' => 'required|string|max:255'
+            'title' => 'required|string',
+            'message' => 'required|string'
         ]);
 
         $post->update($validated);

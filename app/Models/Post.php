@@ -12,7 +12,8 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'message'
+        'title',
+        'message',
     ];
 
     protected $dispatchesEvents = [

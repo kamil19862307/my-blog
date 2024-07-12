@@ -3,6 +3,13 @@
         <form method="POST" action="{{ route('posts.update', $post) }}">
             @csrf
             @method('patch')
+            <input type="text"
+                   name="title"
+                   placeholder="{{ __('Title') }}"
+                   value="{{ old('message', $post->title) }}"
+                   class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+            >
+            <x-input-error :messages="$errors->get('title')" class="mt-2" />
             <textarea
                 name="message"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
