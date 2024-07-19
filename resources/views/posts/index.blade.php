@@ -68,7 +68,9 @@
                             @endif
 
                         </div>
-                        <p class="mt-4 text-lg text-gray-900">{{ $post->title }}</p>
+                        <a href="{{ route('posts.show', $post) }}">
+                            <p class="mt-4 text-lg text-gray-900">{{ $post->title }}</p>
+                        </a>
                         <p class="mt-4 text-lg text-gray-900">{{ $post->message }}</p>
                     </div>
                 </div>

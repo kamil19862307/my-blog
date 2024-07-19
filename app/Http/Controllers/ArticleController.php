@@ -2,22 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleFormRequest;
+use App\Models\Article;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
-class PostController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return view('posts.index', [
-            'posts' => Post::with('user')->latest()->get()
+        $posts = Article::with('user')
+            ->latest()
+            ->get();
+
+        return view('articles.index', [
+            'posts' => $posts
         ]);
     }
 
@@ -26,22 +33,23 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(ArticleFormRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => 'required|string',
-            'message' => 'required|string',
-        ]);
 
-        $request->user()->posts()->create($validated);
+        $validatedData = $request->validated();
+        $user = Auth::user();
+        $article = new Article();
+        $article->title = $validatedData['title'];
+        $article->message = $validatedData['message'];
+        $user->articles()->save($article);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -49,7 +57,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', [
+        return view('articles.show', [
             'post' => $post
         ]);
     }
@@ -57,12 +65,12 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post): View
+    public function edit(Article $article): View
     {
-        Gate::authorize('update', $post);
+        Gate::authorize('update', $article);
 
-        return view('posts.edit', [
-            'post' => $post
+        return view('articles.edit', [
+            'post' => $article
         ]);
     }
 
