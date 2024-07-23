@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Test\ProductController;
+use App\Http\Controllers\Test\ResourceController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,7 +27,30 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('posts', PostController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy'])
+    ->only(['index', 'show', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
+
+Route::resource('articles', ArticleController::class)
+    ->only(['index', 'show', 'store', 'edit', 'update', 'destroy'])
+    ->middleware(['auth', 'verified']);
+
+Route::get('/invoke', MainController::class);
+
+Route::prefix('test')->name('test.')->group(function (){
+    Route::get('/posts', [ProductController::class, 'index'])->name('posts.index');
+    Route::get('/posts/create', [ProductController::class, 'create'])->name('posts.create');
+    Route::post('/posts', [ProductController::class, 'store'])->name('posts.store')
+        ->withoutMiddleware(VerifyCsrfToken::class);
+    Route::get('/posts/{id}', [ProductController::class, 'show'])->name('posts.show');
+    Route::get('/posts/{id}/edit', [ProductController::class, 'edit'])->name('posts.edit');
+    Route::put('/posts/{id}', [ProductController::class, 'update'])->name('posts.update')
+        ->withoutMiddleware(VerifyCsrfToken::class);
+    Route::delete('/posts/{id}', [ProductController::class, 'destroy'])->name('posts.destroy')
+        ->withoutMiddleware(VerifyCsrfToken::class);
+});
+
+Route::resource('resource', ResourceController::class)
+    ->only(['index', 'show'])
+    ->names(['show' => 'resource.view']);
 
 require __DIR__.'/auth.php';
