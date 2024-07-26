@@ -10,11 +10,13 @@ use App\Http\Controllers\Test\ResourceController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/magazine', [HomeController::class, 'index'])->name('magazine');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/show', [HomeController::class, 'show'])->name('home.show');
+Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
