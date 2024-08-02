@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/show', [HomeController::class, 'show'])->name('home.show');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
+
+Route::prefix('blog')->name('blog.')->group(function (){
+    Route::get('/', [BlogController::class, 'index'])->name('home');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
