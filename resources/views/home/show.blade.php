@@ -9,14 +9,7 @@
 </head>
 <body>
 
-<nav>
-    {!! $nav_menu !!}
-</nav>
-
 <h1>{{ $title }}</h1>
-<p>Name: {{ $name }}</p>
-<p>Age: {{ $age }}</p>
-<p>Page description: {{ $page_description }}</p>
 
 </body>
 </html>

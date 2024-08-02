@@ -1,22 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{$site_name . $title }}</title>
-</head>
-<body>
+@extends('layouts.main')
 
-<nav>
-    {!! $nav_menu !!}
-</nav>
+@section('title', $title ?? 'Main Page Title')
 
-<h1>{{ $title }}</h1>
-<p>Name: {{ $name }}</p>
-<p>Age: {{ $age }}</p>
-<p>Count of users: {{ $count }}</p>
+@section('content')
+    <h1>Home page</h1>
+@endsection
 
-</body>
-</html>

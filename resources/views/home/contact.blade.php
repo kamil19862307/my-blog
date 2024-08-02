@@ -1,19 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $title }}</title>
-</head>
-<body>
+@extends('layouts.main')
 
-<nav>
-    {!! $nav_menu !!}
-</nav>
+@section('title', $title ?? 'Main Page Title')
 
-<h1>{{ $title }}</h1>
+@section('content')
 
-</body>
-</html>
+    <h1>Contact page</h1>
+
+@endsection
+
+@section('navbar')
+    @parent
+    <div class="container">
+        Additional content
+    </div>
+@endsection

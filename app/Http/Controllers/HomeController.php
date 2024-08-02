@@ -9,27 +9,25 @@ class HomeController extends Controller
 {
     public function index(): \Illuminate\View\View
     {
-        return View::make('home.index', [
-            'name' => 'John',
-            'age' => 35,
-            'title' => 'Home page'
+        return view('home.index', [
+            'title' => 'Home page',
+            'description' => 'Home page description'
         ]);
     }
 
     public function show(): \Illuminate\View\View
     {
-        $name = 'Ivan';
-        $age = 38;
-        $title = 'Show page';
-
-        return view('home.show', compact('name', 'age', 'title'));
+        return view('home.show', [
+            'title' => 'Show page'
+        ]);
     }
 
     public function contact(): \Illuminate\View\View
     {
-        $title = 'Contact page';
 
-        return view('home.contact')
-            ->with(['title' => $title]);
+        return view('home.contact', [
+            'title' => 'Contact page',
+            'description' => 'Contact page description'
+        ]);
     }
 }
