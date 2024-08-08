@@ -7,8 +7,10 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/css/SimpleBlog.css',
-                'resources/sass/main.sass',
+                'resources/css/bootstrap.css',
+                'resources/css/main.css',
                 'resources/js/app.js',
+                'resources/js/bootstrap.bundle.js',
             ],
             refresh: true,
         }),

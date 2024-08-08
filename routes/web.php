@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Test\ProductController;
 use App\Http\Controllers\Test\ResourceController;
+use App\Http\Controllers\ZoneController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact')
 
 Route::prefix('blog')->name('blog.')->group(function (){
     Route::get('/', [BlogController::class, 'index'])->name('home');
+    Route::get('/blog-single', [BlogController::class, 'blogSingle'])->name('blogSingle');
+});
+
+Route::prefix('zone')->name('zone.')->group(function (){
+    Route::get('/', [ZoneController::class, 'index'])->name('home');
 });
 
 Route::get('/dashboard', function () {

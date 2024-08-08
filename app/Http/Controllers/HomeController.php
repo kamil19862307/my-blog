@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $users = json_decode(file_get_contents('https://jsonplaceholder.typicode.com/users'), true);
 
-        return view('home.index', compact($users));
+        return view('home.index', compact('users'));
     }
 
     public function show(): \Illuminate\View\View

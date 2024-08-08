@@ -1,14 +1,14 @@
 @extends('layouts.blog')
 
-@section('title', 'Main page')
+@section('title', 'Blog single page')
 
 @section('content')
 
     <div id="content-wrap">
 
-        @include('layouts.incs.blog-sitebar')
+{{--        @include('layouts.incs.blog-sitebar')--}}
 
-        <div id="main"><a name="TemplateInfo"></a>
+        <div id="main" style="width: auto;"><a name="TemplateInfo"></a>
             <h1>Template Info</h1>
             <p><strong>SimpleBlog 1.0</strong> is a free, W3C-compliant, CSS-based website template by <strong>styleshout.com</strong>.
                 This work is distributed under the
@@ -43,7 +43,7 @@
                     laoreet dolore magna aliquam erat....</p>
             </blockquote>
             <h3>Image and text</h3>
-            <p><a href="#"><img src="images/blog/firefox.jpeg" width="100" height="120" alt="firefox"
+            <p><a href="#"><img src="/images/blog/firefox.jpeg" width="100" height="120" alt="firefox"
                                 class="float-left"/></a>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id
                 urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo

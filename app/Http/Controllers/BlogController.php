@@ -14,4 +14,10 @@ class BlogController extends Controller
             'title' => 'Blog main page'
         ]);
     }
+    public function blogSingle(): \Illuminate\View\View
+    {
+        return view('blog.blog-single', [
+            'title' => 'Blog single page'
+        ]);
+    }
 }

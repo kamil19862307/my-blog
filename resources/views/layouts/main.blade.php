@@ -5,7 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+{{--        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">--}}
+    {{--    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">--}}
+    {{--    <link rel="stylesheet" href="{{ asset('css/main.css') }}">--}}
+    @vite([
+//        'resources/css/app.css',
+        'resources/css/bootstrap.css',
+        'resources/css/main.css',
+        'resources/js/app.js',
+        'resources/js/bootstrap.bundle.js',
+    ])
     <title>@yield('title', 'PHPZone')</title>
     <meta name="description" content="{{ $description ?? ''}}">
 </head>
@@ -42,6 +51,7 @@
 
 @include('layouts.incs.footer', ['footer_data' => 'Hello from layout'])
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>--}}
+{{--<script src="{{ asset('js/bootstrap.bundle.js') }}"></script>--}}
 </body>
 </html>

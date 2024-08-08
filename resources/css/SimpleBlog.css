@@ -71,7 +71,7 @@ blockquote {
 	margin: 10px;
  	padding: 0 0 0 28px;
    border: 1px solid #f2f2f2;
-  	background: #FAFAFA url(../../public/images/quote.gif) no-repeat 5px 5px;
+  	background: #FAFAFA url(../images/blog/quote.gif) no-repeat 5px 5px;
 }
 
 /* form elements */
@@ -133,7 +133,7 @@ form.search input.button {
 ********************************************/
 #wrap {
 	width: 833px;
-	background: url(../../public/images/bg.jpg) repeat-y center top;
+	background: url(../images/blog/bg.jpg) repeat-y center top;
 	margin: 0 auto;
 	text-align: left;
 }
@@ -148,7 +148,7 @@ form.search input.button {
 	position: relative;
 	width: 833px;
 	height: 100px;
-	background: #FFF url(../../public/images/header.jpg) no-repeat center top;
+	background: #FFF url(../images/blog/header.jpg) no-repeat center top;
 	margin: 0; padding: 0;
 	font-size: 14px;
 	color: #FFF;
@@ -185,7 +185,7 @@ form.search input.button {
 	clear: both;
 	width: 833px;
 	height: 26px;
-	background: #FFF url(../../public/images/menubg.jpg) repeat-y;
+	background: #FFF url(../images/blog/menubg.jpg) repeat-y;
 	margin: 0;
 	font: bolder 12px/26px Tahoma, Verdana, Arial, Sans-Serif;
 }
@@ -221,7 +221,7 @@ form.search input.button {
 #main h1 {
 	color: #667F99;
 	border-bottom: 1px solid #CCCCCC;
-	background: #F6F6F6 url(../../public/images/arrow.gif) no-repeat 5px 50%;
+	background: #F6F6F6 url(../images/blog/arrow.gif) no-repeat 5px 50%;
 	padding: 3px 0 3px 20px;
 	margin: 10px 0 0 0;
 }
@@ -233,15 +233,15 @@ form.search input.button {
 	font-size: 95%;
 }
 .post-footer .date {
-	background: url(../../public/images/clock.gif) no-repeat left center;
+	background: url(../images/blog/clock.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 .post-footer .comments {
-	background: url(../../public/images/comment.gif) no-repeat left center;
+	background: url(../images/blog/comment.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 .post-footer .readmore {
-	background: url(../../public/images/page.gif) no-repeat left center;
+	background: url(../images/blog/page.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 
@@ -266,7 +266,7 @@ form.search input.button {
 }
 #sidebar ul.sidemenu li {
 	border-bottom: 1px solid #EFF0F1;
-	background: url(../../public/images/bullet.gif) no-repeat 2px 3px ;
+	background: url(../images/blog/bullet.gif) no-repeat 2px 3px ;
 	padding: 2px 0 2px 25px;
 	margin: 0 2px;
 }
@@ -284,7 +284,7 @@ form.search input.button {
 	clear: both;
 	color: #66737B;
 	font: normal 90% Verdana, Tahoma, sans-serif;
-	background: #FFF url(../../public/images/footerbg.jpg) no-repeat center top;
+	background: #FFF url(../images/blog/footerbg.jpg) no-repeat center top;
 	width: 833px;
 	height: 60px;
 	text-align: center;

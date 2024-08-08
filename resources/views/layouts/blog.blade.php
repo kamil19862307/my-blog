@@ -4,20 +4,23 @@
     <title>@yield('title', $title ?? env('APP_NAME'))</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     @vite([
-        'resources/css/app.css',
+        'resources/css/bootstrap.css',
         'resources/css/SimpleBlog.css',
-        'resources/sass/main.sass',
-        'resources/js/app.js',
+        'resources/js/bootstrap.bundle.js',
     ])
 </head>
 <body>
 <div id="wrap">
 
-    @yield('content')
+    @include('layouts.incs.blog-header')
+
+        @yield('content')
+
+    @include('layouts.incs.blog-footer')
+
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
