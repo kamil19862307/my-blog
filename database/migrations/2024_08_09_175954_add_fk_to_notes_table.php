@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('message', 10000)
-                ->change();
+        Schema::table('notes', function (Blueprint $table) {
+            $table->bigInteger('category_id')->unsigned()->after('id');
+
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -22,9 +23,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('message')
-                ->change();
+        Schema::table('notes', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+
+            $table->dropColumn('category_id');
         });
     }
 };
