@@ -11,15 +11,16 @@
 
     @forelse($users as $user)
         <span @class(['text-danger' => $loop->odd])>
-            {{ $user['name'] }} <br>
+            {{ $user->id }}. {{ $user->name }} - {{ $user->email }} <br>
         </span>
 
     @empty
         {{ 'No users' }}<br>
     @endforelse
 
-    @for($i = 1; $i <= 10; $i++)
-        {{ $i }} <br>
-    @endfor
+
+{{--    Всего пользователей: {{ $cnt_users[0]->cnt }}--}}
+    Всего пользователей: {{ $cnt_users }}
+
 @endsection
 
