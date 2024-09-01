@@ -13,5 +13,9 @@ class Country extends Model
 
     public $incrementing = false;
 
+    protected $primaryKey = 'Code';
+
     protected $keyType = 'string';
+
+    protected $hidden = ['Region', 'LifeExpectancy'];
 }

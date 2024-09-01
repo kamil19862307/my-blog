@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/show', [HomeController::class, 'show'])->name('home.show');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
+Route::post('/store', [HomeController::class, 'store'])->withoutMiddleware(VerifyCsrfToken::class);
+Route::post('/update', [HomeController::class, 'update'])->withoutMiddleware(VerifyCsrfToken::class);
 
 Route::prefix('blog')->name('blog.')->group(function (){
     Route::get('/', [BlogController::class, 'index'])->name('home');

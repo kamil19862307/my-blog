@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('category_id')
+                ->nullable();
+
+            $table->string('title');
+
+            $table->string('slug')
+                ->nullable();
+
+            $table->mediumText('content');
+
+            $table->boolean('status')->default(1);
+
             $table->timestamps();
         });
     }
