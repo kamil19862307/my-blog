@@ -17,53 +17,70 @@ class HomeController extends Controller
 {
     public function index(): \Illuminate\View\View
     {
-        $users = [];
+        $messages = Message::query()->get();
 
-        $users = DB::table('users')->get(['name', 'id', 'email']);
+//        dump($messages);
 
-//    $countries = Country::query()->find('AFG')->toArray();
+        $messages2 = DB::table('messages')->get();
 
+//        dump($messages2);
 
-//    dump('Count ' . Country::query()->count());
-//    dump('Max ' . Country::query()->where('Population', '>', 1_000_000)->count());
-//    dump('Max ' . Country::query()->max('Population'));
-//    dump('Min ' . Country::query()->min('Population'));
-//    dump('Avg ' . Country::query()->avg('Population'));
-
-//    $countries = Country::query()->find('AFG2');
-//        if(!$countries){
-//            abort(404);
-//        }
-
-
-//        $country = Country::query()->findOrFail('AFG');
-//        dump($country);
-
-
-//        $message = new Message();
-//        $message->title = 'Message 1';
-//        $message->slug = 'message-1';
-//        $message->content = 'Message 1 content';
-//        $message->category_id = 3;
-//        $message->save();
-//        $message->id();
+        $messages3 = DB::select('select * from messages');
 //
-//        dump($message->save());
+//        dump($messages3);
 
-//        Message::query()->create([
-//            'title' => 'Message 2',
-//            'slug' => 'message-2',
-//            'content' => 'message 2 content',
-//            'category_id' => 5,
+//        $data = [1,2,3,4,5,6];
+//
+//        $data = collect($data);
+//
+//        dump($data->toArray());
+
+//        $products = collect([
+//            ['title' => 'Product 1', 'Price' => 10],
+//            ['title' => 'Product 2', 'Price' => 20],
+//            ['title' => 'Product 3', 'Price' => 30],
+//            ['title' => 'Product 4', 'Price' => 40],
+//            ['title' => 'Product 5', 'Price' => 50],
+//            ['title' => 'Product 6', 'Price' => 60],
+//            ['title' => 'Product 7', 'Price' => 70],
+//            ['title' => 'Product 8', 'Price' => 10],
+//            ['title' => 'Product 9', 'Price' => 20],
+//            ['title' => 'Product 10', 'Price' => 30],
+//            ['title' => 'Product 11', 'Price' => 40],
+//            ['title' => 'Product 12', 'Price' => 50],
+//            ['title' => 'Product 13', 'Price' => 60],
+//            ['title' => 'Product 14', 'Price' => 70],
 //        ]);
+//
+//        dump($products);
+//        dump($products->avg('Price'));
+//        dump($products->min('Price'));
+//        dump($products->max('Price'));
+//        dump($products->sum('Price'));
+//
+//        $filtered = $products->filter(function ($value, $key){
+//            return $value['Price'] > 30;
+//        });
+//
+//        dump($filtered);
 
-//        $message = Message::query()->findOrFail(6);
-//        dump($message->delete());
+    $countries = Country::query()->limit(10)->get(['Name', 'Continent', 'Population']);
 
-        dump(Message::destroy(4, 5));
+    $filtered = $countries->filter(function ($value, $key){
+        return $value['Population'] > 1_000_000;
+    });
 
-        return view('home.index', compact('users'));
+    dump($filtered);
+    dump($filtered->max(['Population']));
+    dump($filtered->min(['Population']));
+
+    dump($countries->countBy(function (Country $country){
+        return $country->Continent;
+    }));
+
+        return view('home.index', compact('messages', 'messages2', 'messages3'));
     }
+
 
     public function store(Request $request)
     {
