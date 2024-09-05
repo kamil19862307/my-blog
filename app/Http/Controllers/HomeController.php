@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Country;
 use App\Models\Message;
 use App\Models\Post;
@@ -17,68 +18,15 @@ class HomeController extends Controller
 {
     public function index(): \Illuminate\View\View
     {
-        $messages = Message::query()->get();
-
-//        dump($messages);
-
-        $messages2 = DB::table('messages')->get();
-
-//        dump($messages2);
-
-        $messages3 = DB::select('select * from messages');
+//        $category = Category::query()->findOrFail(3);
 //
-//        dump($messages3);
+//        dump($category->message->content);
 
-//        $data = [1,2,3,4,5,6];
-//
-//        $data = collect($data);
-//
-//        dump($data->toArray());
+        $message = Message::query()->findOrFail(3);
 
-//        $products = collect([
-//            ['title' => 'Product 1', 'Price' => 10],
-//            ['title' => 'Product 2', 'Price' => 20],
-//            ['title' => 'Product 3', 'Price' => 30],
-//            ['title' => 'Product 4', 'Price' => 40],
-//            ['title' => 'Product 5', 'Price' => 50],
-//            ['title' => 'Product 6', 'Price' => 60],
-//            ['title' => 'Product 7', 'Price' => 70],
-//            ['title' => 'Product 8', 'Price' => 10],
-//            ['title' => 'Product 9', 'Price' => 20],
-//            ['title' => 'Product 10', 'Price' => 30],
-//            ['title' => 'Product 11', 'Price' => 40],
-//            ['title' => 'Product 12', 'Price' => 50],
-//            ['title' => 'Product 13', 'Price' => 60],
-//            ['title' => 'Product 14', 'Price' => 70],
-//        ]);
-//
-//        dump($products);
-//        dump($products->avg('Price'));
-//        dump($products->min('Price'));
-//        dump($products->max('Price'));
-//        dump($products->sum('Price'));
-//
-//        $filtered = $products->filter(function ($value, $key){
-//            return $value['Price'] > 30;
-//        });
-//
-//        dump($filtered);
+        dump($message->category->title);
 
-    $countries = Country::query()->limit(10)->get(['Name', 'Continent', 'Population']);
-
-    $filtered = $countries->filter(function ($value, $key){
-        return $value['Population'] > 1_000_000;
-    });
-
-    dump($filtered);
-    dump($filtered->max(['Population']));
-    dump($filtered->min(['Population']));
-
-    dump($countries->countBy(function (Country $country){
-        return $country->Continent;
-    }));
-
-        return view('home.index', compact('messages', 'messages2', 'messages3'));
+        return view('home.index');
     }
 
 
