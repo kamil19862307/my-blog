@@ -20,11 +20,41 @@ class HomeController extends Controller
     {
 //        $category = Category::query()->findOrFail(3);
 //
-//        dump($category->message->content);
+//        dump($category);
+//
+//        $messages = $category->messages;
+//
+//        dump($messages->toArray());
 
-        $message = Message::query()->findOrFail(3);
+//        $message = Message::query()->findOrFail(3);
+//        dump($message->category);
+//        dump($message->category->title);
 
-        dump($message->category->title);
+//        DB::listen(fn($e) => dump($e->toRawSql()));
+
+//        $categories = Category::all();
+//        $categories = Category::with('messages')->get();
+
+//        dump($categories->toArray());
+
+//        dump($categories);
+
+//        foreach ($categories as $category) {
+//            echo "{$category->title} <br>";
+//
+//            foreach ($category->messages as $message) {
+//                echo "{$message->title} <br>";
+//            }
+//        }
+
+
+//        $categories = Category::query()->withCount('message')->get();
+
+        $category = Category::query()->findOrFail(3);
+
+//        dump($category->messages()->where('id', '<>', 1)->orderBy('id', 'desc')->get());
+
+        dump($category->messages->where('id', '<>', 1));
 
         return view('home.index');
     }
