@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Country;
 use App\Models\Message;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -18,43 +19,43 @@ class HomeController extends Controller
 {
     public function index(): \Illuminate\View\View
     {
-//        $category = Category::query()->findOrFail(3);
+//        $message = Message::query()->findOrFail(2);
+
+//        dump($message);
+
+//        $tags = $message->tags;
 //
-//        dump($category);
-//
-//        $messages = $category->messages;
-//
-//        dump($messages->toArray());
-
-//        $message = Message::query()->findOrFail(3);
-//        dump($message->category);
-//        dump($message->category->title);
-
-//        DB::listen(fn($e) => dump($e->toRawSql()));
-
-//        $categories = Category::all();
-//        $categories = Category::with('messages')->get();
-
-//        dump($categories->toArray());
-
-//        dump($categories);
-
-//        foreach ($categories as $category) {
-//            echo "{$category->title} <br>";
-//
-//            foreach ($category->messages as $message) {
-//                echo "{$message->title} <br>";
-//            }
+//        foreach ($tags as $tag) {
+//            echo "{$tag->title} | {$tag->slug} | {$tag->pivot->created_at}<br>";
 //        }
 
+//        $tags = Tag::query()->findOrFail(4);
+//
+//        dump($tags->messages->toArray());
 
-//        $categories = Category::query()->withCount('message')->get();
+//        $messages = Message::all();
+//
+//        foreach ($messages as $message) {
+//            echo "{$message->title}<br>";
+//            foreach ($message->tags as $tag) {
+//                echo "{$tag->title}<br>";
+//            }
+//            echo '<hr>';
+//        }
 
-        $category = Category::query()->findOrFail(3);
+//        $messages = Message::with('tags')->get();
+//
+//        foreach ($messages as $message) {
+//            echo "{$message->title}<br>";
+//            foreach ($message->tags as $tag) {
+//                echo "{$tag->title}<br>";
+//            }
+//            echo '<hr>';
+//        }
 
-//        dump($category->messages()->where('id', '<>', 1)->orderBy('id', 'desc')->get());
+//        dump(Category::query()->findOrFail(6)->latestMessage);
 
-        dump($category->messages->where('id', '<>', 1));
+        dump(Category::query()->findOrFail(6)->latestActiveMessage);
 
         return view('home.index');
     }
