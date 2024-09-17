@@ -22,6 +22,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact')
 Route::post('/store', [HomeController::class, 'store'])->withoutMiddleware(VerifyCsrfToken::class);
 Route::post('/update', [HomeController::class, 'update'])->withoutMiddleware(VerifyCsrfToken::class);
 
+
 Route::prefix('blog')->name('blog.')->group(function (){
     Route::get('/', [BlogController::class, 'index'])->name('home');
     Route::get('/blog-single', [BlogController::class, 'blogSingle'])->name('blogSingle');

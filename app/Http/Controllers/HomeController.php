@@ -19,43 +19,44 @@ class HomeController extends Controller
 {
     public function index(): \Illuminate\View\View
     {
-//        $message = Message::query()->findOrFail(2);
 
-//        dump($message);
+//        Message::query()->create([
+//            'title' => 'Message 12',
+//            'slug' => 'Message-12',
+//            'content' => 'Message-12 content',
+//            'category_id' => 5,
+//        ]);
 
-//        $tags = $message->tags;
+//        $category = Category::query()->findOrFail(5);
 //
-//        foreach ($tags as $tag) {
-//            echo "{$tag->title} | {$tag->slug} | {$tag->pivot->created_at}<br>";
-//        }
+//        $category->messages()->save(new Message([
+//            'title' => 'Message 13',
+//            'slug' => 'Message-13',
+//            'content' => 'Message-13 content'
+//        ]));
 
-//        $tags = Tag::query()->findOrFail(4);
+//        $category = Category::query()->findOrFail(5);
 //
-//        dump($tags->messages->toArray());
+//        $category->messages()->saveMany([
+//            new Message([
+//            'title' => 'Message 14',
+//            'slug' => 'Message-14',
+//            'content' => 'Message-14 content'
+//        ]),
+//            new Message([
+//                'title' => 'Message 15',
+//                'slug' => 'Message-15',
+//                'content' => 'Message-15 content'
+//            ])
+//        ]);
 
-//        $messages = Message::all();
-//
-//        foreach ($messages as $message) {
-//            echo "{$message->title}<br>";
-//            foreach ($message->tags as $tag) {
-//                echo "{$tag->title}<br>";
-//            }
-//            echo '<hr>';
-//        }
+        $message = Message::query()->findOrFail(12);
 
-//        $messages = Message::with('tags')->get();
-//
-//        foreach ($messages as $message) {
-//            echo "{$message->title}<br>";
-//            foreach ($message->tags as $tag) {
-//                echo "{$tag->title}<br>";
-//            }
-//            echo '<hr>';
-//        }
+//        $message->tags()->attach([6, 5, 3]);
+//        $message->tags()->detach([3]);
+//        $message->tags()->sync([6, 5, 3]);
 
-//        dump(Category::query()->findOrFail(6)->latestMessage);
-
-        dump(Category::query()->findOrFail(6)->latestActiveMessage);
+        $message->tags()->toggle([6, 5, 3]);
 
         return view('home.index');
     }

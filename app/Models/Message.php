@@ -37,7 +37,7 @@ class Message extends Model
     public function tags(): BelongsToMany
     {
 //        return $this->belongsToMany(Tag::class)->as('ca')->withPivot(['created_at']);
-//        return $this->belongsToMany(Tag::class)->withTimestamps();
-        return $this->belongsToMany(Tag::class)->withPivot(['created_at']);
+//        return $this->belongsToMany(Tag::class)->withPivot(['created_at']);
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 }
