@@ -35,6 +35,9 @@
                         <a class="nav-link active" aria-current="page" href="{{ route('home.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('messages.create') }}">Messages</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('home.contact') }}">Contact</a>
                     </li>
                 </ul>
