@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMessageRequest;
 use App\Models\Message;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -15,16 +15,9 @@ class MessageController extends Controller
     }
 
     // для сохранения данных из формы
-    public function store(Request $request): RedirectResponse
+    public function store(StoreMessageRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => ['required', 'max:100'],
-            'slug' => ['required', 'unique:messages', 'max:255'],
-            'content' => ['required'],
-            'category_id' => ['required', 'exists:categories,id']
-        ]);
-
-        Message::query()->create($request->all());
+        Message::query()->create($request->validated());
 
         return redirect()->route('messages.create')
             ->with('success', 'Message ' . $request->title . ' has been created!');
